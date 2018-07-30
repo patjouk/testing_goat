@@ -1,0 +1,8 @@
+[run]
+source = .
+omit =
+    **/migrations/*
+    **/virtualenvs/*
+    **/tests/*
+    manage.py
+    superlists/wsgi.py
