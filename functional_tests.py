@@ -34,17 +34,24 @@ class NewVisitorTest(unittest.TestCase):
 
         table = self.browser.find_element_by_id("id_list_table")
         rows = table.find_elements_by_tag_name("tr")
-        self.assertTrue(
-            any(row.text == "1: Buy peacock feathers" for row in rows),
-            "New item did not appear in the table",
+        self.assertIn("1: Buy peacock feathers", [row.text for row in rows])
+
+        # Can add more items in the to-do list
+        inputbox = self.browser.find_element_by_id("id_new_item")
+        inputbox.send_keys("Use peacock feathers to make a fly")
+        inputbox.send_keys(Keys.ENTER)
+        time.sleep(1)
+
+        # When the page is updated, both items are listed
+        table = self.browser.find_element_by_id("id_list_table")
+        rows = table.find_elements_by_tag_name("tr")
+        self.assertIn("1: Buy peacock feathers", [row.text for row in rows])
+        self.assertIn(
+            "2: Use peacock feathers to make a fly", [row.text for row in rows]
         )
 
-        # Can add more item in the to-do list
-        self.fail("Finish the test!")
-
-        # If update the page, the items are still there
-
         # Each to-do has it's own URL, as explain to users
+        self.fail("Finish the test!")
 
         # URL return the corresponding to-do list
 
