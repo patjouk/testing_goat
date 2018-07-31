@@ -3,7 +3,6 @@ import unittest
 
 
 class NewVisitorTest(unittest.TestCase):
-
     def setUp(self):
         self.browser = webdriver.Firefox()
 
@@ -12,11 +11,11 @@ class NewVisitorTest(unittest.TestCase):
 
     def test_can_start_a_list_and_retrieve_it_later(self):
         # Can reach the homepage
-        self.browser.get('http://localhost:8000')
+        self.browser.get("http://localhost:8000")
 
         # WebApp has correct name
-        self.assertIn('To-Do', self.browser.title)
-        self.fail('Finish the test!')
+        self.assertIn("To-Do", self.browser.title)
+        self.fail("Finish the test!")
 
         # Can enter item in to-do list straight away
 
@@ -33,5 +32,5 @@ class NewVisitorTest(unittest.TestCase):
         # URL return the corresponding to-do list
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
