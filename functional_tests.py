@@ -18,12 +18,12 @@ class NewVisitorTest(unittest.TestCase):
 
         # WebApp has correct name and header mentioning to-do lists
         self.assertIn("To-Do", self.browser.title)
-        header_text = self.browser.find_element("h1").text
+        header_text = self.browser.find_element_by_tag_name("h1").text
         self.assertIn("To-Do", header_text)
 
         # Can enter item in to-do list straight away
         inputbox = self.browser.find_element_by_id("id_new_item")
-        self.assertEqual(inputbox.get_attribute("placeholder"), "Enter a to-do iten")
+        self.assertEqual(inputbox.get_attribute("placeholder"), "Enter a to-do item")
 
         # Can enter content in a text box
         inputbox.send_keys("Buy peacock feathers")
@@ -34,7 +34,10 @@ class NewVisitorTest(unittest.TestCase):
 
         table = self.browser.find_element_by_id("id_list_table")
         rows = table.find_elements_by_tag_name("tr")
-        self.assertTrue(any(row.text == "1: Buy peacock feathers" for row in rows))
+        self.assertTrue(
+            any(row.text == "1: Buy peacock feathers" for row in rows),
+            "New item did not appear in the table",
+        )
 
         # Can add more item in the to-do list
         self.fail("Finish the test!")
