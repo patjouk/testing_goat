@@ -1,11 +1,10 @@
-import time
+from django.test import LiveServerTestCase
 from selenium import webdriver
-import unittest
-
 from selenium.webdriver.common.keys import Keys
+import time
 
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Firefox()
 
@@ -19,7 +18,7 @@ class NewVisitorTest(unittest.TestCase):
 
     def test_can_start_a_list_and_retrieve_it_later(self):
         # Can reach the homepage
-        self.browser.get("http://localhost:8000")
+        self.browser.get(self.live_server_url)
 
         # WebApp has correct name and header mentioning to-do lists
         self.assertIn("To-Do", self.browser.title)
@@ -53,7 +52,3 @@ class NewVisitorTest(unittest.TestCase):
         self.fail("Finish the test!")
 
         # URL return the corresponding to-do list
-
-
-if __name__ == "__main__":
-    unittest.main()

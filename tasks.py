@@ -16,4 +16,3 @@ def lint(ctx):
 @task
 def test(ctx):
     ctx.run("pipenv run coverage run manage.py test")
-    ctx.run("pipenv run python functional_tests.py")
