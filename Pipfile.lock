@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "8c5db639ae7bfcc8acb1ddbda99cdf6450f848f7dee35d6d9b2bc2cc1a0fd099"
+            "sha256": "b0a60b1804c259170f9767d37f4fab80ae30aa52fac25c908f377d71da100c37"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,10 +18,19 @@
     "default": {
         "django": {
             "hashes": [
-                "sha256:486f8c08fd8fcb44c66e5d6d4a845a28831b3f5be1bbd4dcc245938ed55cdff1"
+                "sha256:7f246078d5a546f63c28fc03ce71f4d7a23677ce42109219c24c9ffb28416137",
+                "sha256:ea50d85709708621d956187c6b61d9f9ce155007b496dd914fdb35db8d790aec"
             ],
             "index": "pypi",
-            "version": "==2.1rc1"
+            "version": "==2.1"
+        },
+        "django-environ": {
+            "hashes": [
+                "sha256:6c9d87660142608f63ec7d5ce5564c49b603ea8ff25da595fd6098f6dc82afde",
+                "sha256:c57b3c11ec1f319d9474e3e5a79134f40174b17c7cc024bbb2fad84646b120c4"
+            ],
+            "index": "pypi",
+            "version": "==0.4.5"
         },
         "psycopg2": {
             "hashes": [
@@ -68,11 +77,19 @@
         },
         "selenium": {
             "hashes": [
-                "sha256:6f4c7727d44034b8d635d7cf1c3377f76efc95e192ed5cfb97e0057fe5a92d44",
-                "sha256:f35bb209cab740c195276a323c1b750dbcfdb9f6983e7d6e3abba9cd8838f355"
+                "sha256:c53d13a2627d835fee3d1d6291214c62196dfeb6f5f35572bacf31ac60c030c0",
+                "sha256:f9ca21919b564a0a86012cd2177923e3a7f37c4a574207086e710192452a7c40"
             ],
             "index": "pypi",
-            "version": "==3.13.0"
+            "version": "==3.14.0"
+        },
+        "urllib3": {
+            "hashes": [
+                "sha256:a68ac5e15e76e7e5dd2b8f94007233e01effe3e50e8daddf69acfd81cb686baf",
+                "sha256:b5725a0bd4ba422ab0e66e89e030c806576753ea3ee08554382c14e685d117b5"
+            ],
+            "markers": "python_version != '3.2.*' and python_version != '3.1.*' and python_version != '3.3.*' and python_version < '4' and python_version != '3.0.*' and python_version >= '2.6'",
+            "version": "==1.23"
         }
     },
     "develop": {
