@@ -8,6 +8,7 @@ django = "*"
 selenium = "*"
 "psycopg2" = "*"
 django-environ = "*"
+gunicorn = "*"
 
 [dev-packages]
 coverage = "*"
