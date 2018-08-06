@@ -18,6 +18,7 @@ root_dir = environ.Path(__file__) - 2
 
 env = environ.Env(
     DEBUG=(bool, False),
+    ALLOWED_HOSTS=(list, ""),
 )
 
 environ.Env.read_env()
@@ -36,7 +37,7 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
 
 # Application definition
