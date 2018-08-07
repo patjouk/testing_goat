@@ -3,7 +3,9 @@ from fabric.contrib.files import append, exists
 from fabric.api import cd, env, local, run
 
 REPO_URL = "https://github.com/patjouk/testing_goat.git"
-SITE_FOLDER = f"/home/{env.user}/sites/{env.host}"
+# can't make "env.host" work :( Using hosts list instead
+env.hosts = ["testing-goat-staging.justhiding.org"]
+SITE_FOLDER = f"/home/{env.user}/sites/{env.hosts[0]}"
 
 def deploy():
     run(f"mkdir -p {SITE_FOLDER}")
@@ -29,8 +31,8 @@ def _pipenv_install():
 def _create_or_update_dotenv():
     with cd(SITE_FOLDER + "/superlists"):
         append(".env", "DEBUG=False")
-        append(".env", "ALLOWED_HOSTS={env.host}")
-        append(".env", "SITENAME={env.host")
+        append(".env", f"ALLOWED_HOSTS={env.host}")
+        append(".env", f"SITENAME={env.host}")
         current_contents = run("cat .env")
         if "DJANGO_SECRET_KEY" not in current_contents:
             new_secret = "".join(random.SystemRandom().choices(
