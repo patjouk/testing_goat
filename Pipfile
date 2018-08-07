@@ -9,6 +9,7 @@ selenium = "*"
 "psycopg2" = "*"
 django-environ = "*"
 gunicorn = "*"
+"fabric3" = "*"
 
 [dev-packages]
 coverage = "*"
