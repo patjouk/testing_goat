@@ -16,10 +16,7 @@ import os
 # Environ config
 root_dir = environ.Path(__file__) - 2
 
-env = environ.Env(
-    DEBUG=(bool, False),
-    ALLOWED_HOSTS=(list, ""),
-)
+env = environ.Env(DEBUG=(bool, False), ALLOWED_HOSTS=(list, ""))
 
 environ.Env.read_env()
 
