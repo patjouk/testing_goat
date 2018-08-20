@@ -1,6 +1,7 @@
 import random
 from fabric.contrib.files import append, exists
 from fabric.api import cd, env, local, run
+from fabric.operations import reboot
 
 REPO_URL = "https://github.com/patjouk/testing_goat.git"
 
@@ -21,6 +22,8 @@ def deploy():
             _create_or_update_dotenv()
         _update_static_files()
         _update_database()
+    print("Rebooting now!")
+    _reboot_instance()
 
 
 def _get_latest_source():
@@ -55,3 +58,6 @@ def _update_static_files():
 
 def _update_database():
     run("pipenv run python manage.py migrate --noinput")
+
+def _reboot_instance():
+    reboot(command="shutdown -r +0")
