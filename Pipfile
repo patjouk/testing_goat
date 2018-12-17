@@ -6,14 +6,14 @@ name = "pypi"
 [packages]
 django = "*"
 selenium = "*"
-"psycopg2" = "*"
 django-environ = "*"
 gunicorn = "*"
 "fabric3" = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 coverage = "*"
-"flake8" = {git = "https://gitlab.com/pycqa/flake8"}
+flake8 = "*"
 black = "*"
 
 [requires]
