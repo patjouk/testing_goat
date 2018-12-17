@@ -59,5 +59,6 @@ def _update_static_files():
 def _update_database():
     run("pipenv run python manage.py migrate --noinput")
 
+
 def _reboot_instance():
     reboot(command="shutdown -r +0")
