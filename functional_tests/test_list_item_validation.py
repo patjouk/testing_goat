@@ -59,12 +59,11 @@ class ItemValidationTest(FunctionalTest):
         # She sees an error message
         self.wait_for(
             lambda: self.assertEqual(
-                self.get_error_element().text,
-                "You've already got this in your list",
+                self.get_error_element().text, "You've already got this in your list"
             )
         )
 
-    def test_error_mesages_are_cleared_on_input(self):
+    def test_error_messages_are_cleared_on_input(self):
         # Alice starts a list and causes a validation error (stop breaking stuff Alice!)
         self.browser.get(self.live_server_url)
         self.get_item_input_box().send_keys("Banter too thick")
@@ -72,14 +71,10 @@ class ItemValidationTest(FunctionalTest):
         self.wait_for_row_in_list_table("1: Banter too thick")
         self.get_item_input_box().send_keys("Banter too thick")
         self.get_item_input_box().send_keys(Keys.ENTER)
-        self.wait_for(lambda: self.assertTrue(
-            self.get_error_element().is_displayed()
-        ))
+        self.wait_for(lambda: self.assertTrue(self.get_error_element().is_displayed()))
 
         # She starts typing
         self.get_item_input_box().send_keys("a")
 
         # The error message disappears
-        self.wait_for(lambda: self.assertFalse(
-            self.get_error_element().is_displayed()
-        ))
+        self.wait_for(lambda: self.assertFalse(self.get_error_element().is_displayed()))
