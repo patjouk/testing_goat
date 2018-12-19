@@ -16,7 +16,15 @@ import os
 # Environ config
 root_dir = environ.Path(__file__) - 2
 
-env = environ.Env(DEBUG=(bool, False), ALLOWED_HOSTS=(list, ""))
+env = environ.Env(
+    DEBUG=(bool, False),
+    ALLOWED_HOSTS=(list, ""),
+    EMAIL_HOST=(str, ""),
+    EMAIL_HOST_USER=(str, ""),
+    EMAIL_HOST_PASSWORD=(str, ""),
+    EMAIL_PORT=(int, ""),
+    EMAIL_USE_TLS=(bool, True)
+)
 
 environ.Env.read_env()
 
@@ -80,6 +88,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "superlists.wsgi.application"
 
 AUTH_USER_MODEL = "accounts.User"
+AUTHENTICATION_BACKENDS = ["accounts.authentication.PasswordlessAuthenticationBackend"]
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
@@ -133,3 +142,10 @@ LOGGING = {
     "loggers": {"django": {"handlers": ["console"]}},
     "root": {"level": "INFO"},
 }
+
+# Email configuration
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_USE_TLS = env("EMAIL_USE_TLS")
