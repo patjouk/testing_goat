@@ -15,6 +15,7 @@ psycopg2-binary = "*"
 coverage = "*"
 flake8 = "*"
 black = "*"
+ipython = "*"
 
 [requires]
 python_version = "3.7"
