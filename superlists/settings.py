@@ -23,7 +23,7 @@ env = environ.Env(
     EMAIL_HOST_USER=(str, ""),
     EMAIL_HOST_PASSWORD=(str, ""),
     EMAIL_PORT=(int, ""),
-    EMAIL_USE_TLS=(bool, True)
+    EMAIL_USE_TLS=(bool, True),
 )
 
 environ.Env.read_env()
