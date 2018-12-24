@@ -6,14 +6,12 @@ import uuid
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('accounts', '0005_token_uid'),
-    ]
+    dependencies = [("accounts", "0005_token_uid")]
 
     operations = [
         migrations.AlterField(
-            model_name='token',
-            name='uid',
+            model_name="token",
+            name="uid",
             field=models.CharField(default=uuid.uuid4, max_length=40),
-        ),
+        )
     ]

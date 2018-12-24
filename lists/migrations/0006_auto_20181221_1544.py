@@ -5,13 +5,8 @@ from django.db import migrations
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('lists', '0005_list_item_unique_together'),
-    ]
+    dependencies = [("lists", "0005_list_item_unique_together")]
 
     operations = [
-        migrations.AlterModelOptions(
-            name='item',
-            options={'ordering': ('id',)},
-        ),
+        migrations.AlterModelOptions(name="item", options={"ordering": ("id",)})
     ]
