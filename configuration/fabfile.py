@@ -1,7 +1,7 @@
 import random
 from fabric.contrib.files import append, exists
 from fabric.api import cd, env, local, run
-from fabric.operations import reboot
+from fabric.operations import reboot, put
 
 REPO_URL = "https://github.com/patjouk/testing_goat.git"
 
@@ -41,7 +41,7 @@ def _pipenv_install():
 
 
 def _create_or_update_dotenv():
-    append(".env", "DEBUG=False")
+    put(f".env", ".env")
     append(".env", f"ALLOWED_HOSTS={env.host}")
     append(".env", f"SITENAME={env.host}")
     current_contents = run("cat .env")
