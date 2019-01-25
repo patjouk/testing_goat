@@ -1,16 +1,13 @@
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 
 from lists.models import Item, List
 
+User = get_user_model()
+
 
 class ItemModelTest(TestCase):
-    def test_get_absolute_url(self):
-        list_ = List.objects.create()
-        self.assertEqual(list_.get_absolute_url(), f"/lists/{list_.id}/")
-
-
-class ListModelTest(TestCase):
     def test_default_text(self):
         item = Item()
         self.assertEqual(item.text, "")
@@ -42,3 +39,9 @@ class ListModelTest(TestCase):
         Item.objects.create(list=list1, text="bla")
         item = Item.objects.create(list=list2, text="bla")
         item.full_clean()
+
+
+class ListModelTest(TestCase):
+    def test_get_absolute_url(self):
+        list_ = List.objects.create()
+        self.assertEqual(list_.get_absolute_url(), f"/lists/{list_.id}/")
