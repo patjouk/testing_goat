@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth import SESSION_KEY, BACKEND_SESSION_KEY, get_user_model
 from django.contrib.sessions.backends.db import SessionStore
+from selenium.common.exceptions import NoSuchElementException
 
 from functional_tests.base import FunctionalTest
 
@@ -67,8 +68,9 @@ class MyListTest(FunctionalTest):
 
         # They log out. The "My lists" option disappears
         self.browser.find_element_by_link_text("Log out").click()
-        self.wait_for(
-            lambda: self.assertEqual(
-                self.browser.find_element_by_link_text("My lists"), []
+        with self.assertRaises(NoSuchElementException):
+            self.wait_for(
+                lambda: self.assertEqual(
+                    self.browser.find_element_by_link_text("My lists"), []
+                )
             )
-        )
